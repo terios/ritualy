@@ -1,0 +1,58 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _templateObject = _taggedTemplateLiteral(['\n  body {\n    margin: 0;\n  }\n'], ['\n  body {\n    margin: 0;\n  }\n']);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRouterDom = require('react-router-dom');
+
+var _styledComponents = require('styled-components');
+
+var _components = require('components');
+
+var _default2 = require('./themes/default');
+
+var _default3 = _interopRequireDefault(_default2);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+// https://github.com/diegohaz/arc/wiki/Styling
+
+
+(0, _styledComponents.injectGlobal)(_templateObject);
+
+var App = function App() {
+  return _react2.default.createElement(
+    _styledComponents.ThemeProvider,
+    { theme: _default3.default },
+    _react2.default.createElement(
+      _reactRouterDom.Switch,
+      null,
+      _react2.default.createElement(_reactRouterDom.Route, { path: '/', component: _components.HomePage, exact: true })
+    )
+  );
+};
+
+var _default = App;
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(App, 'App', '/Users/anas/workspace/ritualy/src/components/App.js');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/anas/workspace/ritualy/src/components/App.js');
+}();
+
+;

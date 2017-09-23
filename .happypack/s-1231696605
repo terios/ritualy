@@ -1,0 +1,57 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRouterDom = require('react-router-dom');
+
+var _MuiThemeProvider = require('material-ui/styles/MuiThemeProvider');
+
+var _MuiThemeProvider2 = _interopRequireDefault(_MuiThemeProvider);
+
+var _getMuiTheme = require('material-ui/styles/getMuiTheme');
+
+var _getMuiTheme2 = _interopRequireDefault(_getMuiTheme);
+
+var _components = require('components/');
+
+var _default2 = require('./themes/default');
+
+var _default3 = _interopRequireDefault(_default2);
+
+var _components2 = require('components');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var App = function App() {
+  return _react2.default.createElement(
+    _MuiThemeProvider2.default,
+    { muiTheme: (0, _getMuiTheme2.default)(_default3.default) },
+    _react2.default.createElement(
+      _reactRouterDom.Switch,
+      null,
+      _react2.default.createElement(_reactRouterDom.Route, { path: '/', component: _components2.HomePage, exact: true })
+    )
+  );
+};
+
+var _default = App;
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(App, 'App', '/Users/anas/workspace/ritualy/src/components/App.js');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/anas/workspace/ritualy/src/components/App.js');
+}();
+
+;

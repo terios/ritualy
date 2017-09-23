@@ -1,4 +1,3 @@
-// https://github.com/diegohaz/arc/wiki/Example-app
 import 'react-hot-loader/patch'
 import 'babel-polyfill'
 import React from 'react'
@@ -10,6 +9,10 @@ import { basename } from 'config'
 import configureStore from 'store/configure'
 import api from 'services/api'
 import App from 'components/App'
+
+import injectTapEventPlugin from 'react-tap-event-plugin'
+
+injectTapEventPlugin()
 
 const store = configureStore({}, { api: api.create() })
 

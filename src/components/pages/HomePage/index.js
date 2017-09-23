@@ -1,9 +1,12 @@
 // https://github.com/diegohaz/arc/wiki/Atomic-Design
 import React from 'react'
+import { GenericTemplate, Header } from 'components'
 
 const HomePage = () => {
   return (
-    <div>Hello World</div>
+    <GenericTemplate header={<Header />}>
+      <div>Hello World</div>
+    </GenericTemplate>
   )
 }
 

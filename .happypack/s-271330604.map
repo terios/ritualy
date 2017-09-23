@@ -1,0 +1,1 @@
+{"version":3,"sources":["src/components/themes/default.js"],"names":["palette"],"mappings":";;;;;eAAe;AACbA,WAAS;AADI,C","file":"default.js","sourceRoot":"/Users/anas/workspace/ritualy","sourcesContent":["export default {\n  palette: {},\n}\n"]}

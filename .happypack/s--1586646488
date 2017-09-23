@@ -1,0 +1,21 @@
+'use strict';
+
+var _require = require('redux-saga-thunk'),
+    thunkMiddleware = _require.middleware;
+
+var req = require.context('.', true, /\.\/.+\/middleware\.js$/);
+
+module.exports = req.keys().map(function (key) {
+  return req(key).default;
+}).concat([thunkMiddleware]);
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(req, 'req', '/Users/anas/workspace/ritualy/src/store/middlewares.js');
+}();
+
+;

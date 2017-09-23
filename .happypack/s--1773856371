@@ -1,0 +1,144 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.parseEndpoint = exports.parseSettings = exports.parseJSON = exports.checkStatus = undefined;
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+require('whatwg-fetch');
+
+var _queryString = require('query-string');
+
+var _merge = require('lodash/merge');
+
+var _merge2 = _interopRequireDefault(_merge);
+
+var _config = require('config');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; } // https://github.com/diegohaz/arc/wiki/API-service
+
+
+var checkStatus = exports.checkStatus = function checkStatus(response) {
+  if (response.ok) {
+    return response;
+  }
+  var error = new Error(response.status + ' ' + response.statusText);
+  error.response = response;
+  throw error;
+};
+
+var parseJSON = exports.parseJSON = function parseJSON(response) {
+  return response.json();
+};
+
+var parseSettings = function parseSettings() {
+  var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+  var _ref$method = _ref.method,
+      method = _ref$method === undefined ? 'get' : _ref$method,
+      data = _ref.data,
+      locale = _ref.locale,
+      otherSettings = _objectWithoutProperties(_ref, ['method', 'data', 'locale']);
+
+  var headers = {
+    Accept: 'application/json',
+    'Content-Type': 'application/json',
+    'Accept-Language': locale
+  };
+  var settings = (0, _merge2.default)({
+    body: data ? JSON.stringify(data) : undefined,
+    method: method,
+    headers: headers
+  }, otherSettings);
+  return settings;
+};
+
+exports.parseSettings = parseSettings;
+var parseEndpoint = exports.parseEndpoint = function parseEndpoint(endpoint, params) {
+  var url = endpoint.indexOf('http') === 0 ? endpoint : _config.apiUrl + endpoint;
+  var querystring = params ? '?' + (0, _queryString.stringify)(params) : '';
+  return '' + url + querystring;
+};
+
+var api = {};
+
+api.request = function (endpoint) {
+  var _ref2 = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+  var params = _ref2.params,
+      settings = _objectWithoutProperties(_ref2, ['params']);
+
+  return fetch(parseEndpoint(endpoint, params), parseSettings(settings)).then(checkStatus).then(parseJSON);
+};['delete', 'get'].forEach(function (method) {
+  api[method] = function (endpoint, settings) {
+    return api.request(endpoint, _extends({ method: method }, settings));
+  };
+});['post', 'put', 'patch'].forEach(function (method) {
+  api[method] = function (endpoint, data, settings) {
+    return api.request(endpoint, _extends({ method: method, data: data }, settings));
+  };
+});
+
+api.create = function () {
+  var settings = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  return {
+    settings: settings,
+
+    setToken: function setToken(token) {
+      this.settings.headers = _extends({}, this.settings.headers, {
+        Authorization: 'Bearer ' + token
+      });
+    },
+    unsetToken: function unsetToken() {
+      this.settings.headers = _extends({}, this.settings.headers, {
+        Authorization: undefined
+      });
+    },
+    request: function request(endpoint, settings) {
+      return api.request(endpoint, (0, _merge2.default)({}, this.settings, settings));
+    },
+    post: function post(endpoint, data, settings) {
+      return this.request(endpoint, _extends({ method: 'post', data: data }, settings));
+    },
+    get: function get(endpoint, settings) {
+      return this.request(endpoint, _extends({ method: 'get' }, settings));
+    },
+    put: function put(endpoint, data, settings) {
+      return this.request(endpoint, _extends({ method: 'put', data: data }, settings));
+    },
+    patch: function patch(endpoint, data, settings) {
+      return this.request(endpoint, _extends({ method: 'patch', data: data }, settings));
+    },
+    delete: function _delete(endpoint, settings) {
+      return this.request(endpoint, _extends({ method: 'delete' }, settings));
+    }
+  };
+};
+
+var _default = api;
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(checkStatus, 'checkStatus', '/Users/anas/workspace/ritualy/src/services/api/index.js');
+
+  __REACT_HOT_LOADER__.register(parseJSON, 'parseJSON', '/Users/anas/workspace/ritualy/src/services/api/index.js');
+
+  __REACT_HOT_LOADER__.register(parseSettings, 'parseSettings', '/Users/anas/workspace/ritualy/src/services/api/index.js');
+
+  __REACT_HOT_LOADER__.register(parseEndpoint, 'parseEndpoint', '/Users/anas/workspace/ritualy/src/services/api/index.js');
+
+  __REACT_HOT_LOADER__.register(api, 'api', '/Users/anas/workspace/ritualy/src/services/api/index.js');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/anas/workspace/ritualy/src/services/api/index.js');
+}();
+
+;

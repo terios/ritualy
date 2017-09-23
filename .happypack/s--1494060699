@@ -1,0 +1,50 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _effects = require('redux-saga/effects');
+
+var req = require.context('.', true, /\.\/.+\/sagas\.js$/); // https://github.com/diegohaz/arc/wiki/Sagas
+
+
+var sagas = req.keys().map(function (key) {
+  return req(key).default;
+});
+
+var _default = /*#__PURE__*/regeneratorRuntime.mark(function _default() {
+  var services = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  return regeneratorRuntime.wrap(function _default$(_context) {
+    while (1) {
+      switch (_context.prev = _context.next) {
+        case 0:
+          _context.next = 2;
+          return (0, _effects.all)(sagas.map(function (saga) {
+            return (0, _effects.fork)(saga, services);
+          }));
+
+        case 2:
+        case 'end':
+          return _context.stop();
+      }
+    }
+  }, _default, this);
+});
+
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(req, 'req', '/Users/anas/workspace/ritualy/src/store/sagas.js');
+
+  __REACT_HOT_LOADER__.register(sagas, 'sagas', '/Users/anas/workspace/ritualy/src/store/sagas.js');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/anas/workspace/ritualy/src/store/sagas.js');
+}();
+
+;

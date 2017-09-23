@@ -1,0 +1,66 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = require("react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRouterDom = require("react-router-dom");
+
+var _styledComponents = require("styled-components");
+
+var _styledComponents2 = _interopRequireDefault(_styledComponents);
+
+var _AppBar = require("material-ui/AppBar");
+
+var _AppBar2 = _interopRequireDefault(_AppBar);
+
+var _FlatButton = require("material-ui/FlatButton");
+
+var _FlatButton2 = _interopRequireDefault(_FlatButton);
+
+var _IconButton = require("material-ui/IconButton");
+
+var _IconButton2 = _interopRequireDefault(_IconButton);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Wrapper = (0, _styledComponents2.default)(_AppBar2.default).withConfig({
+  displayName: "Header__Wrapper"
+})(["\n  margin-bottom: 20px;\n"]);
+
+var Header = function Header(props) {
+  return _react2.default.createElement(Wrapper, {
+    title: "Ritualy",
+    iconElementRight: _react2.default.createElement(
+      _IconButton2.default,
+      null,
+      _react2.default.createElement(
+        "i",
+        { className: "material-icons" },
+        "filter_list"
+      )
+    )
+  });
+};
+
+var _default = Header;
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(Wrapper, "Wrapper", "/Users/anas/workspace/ritualy/src/components/organisms/Header/index.js");
+
+  __REACT_HOT_LOADER__.register(Header, "Header", "/Users/anas/workspace/ritualy/src/components/organisms/Header/index.js");
+
+  __REACT_HOT_LOADER__.register(_default, "default", "/Users/anas/workspace/ritualy/src/components/organisms/Header/index.js");
+}();
+
+;

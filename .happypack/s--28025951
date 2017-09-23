@@ -1,0 +1,73 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _styledComponents = require('styled-components');
+
+var _styledComponents2 = _interopRequireDefault(_styledComponents);
+
+var _components = require('components');
+
+var _colors = require('material-ui/styles/colors');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+var Wrapper = _styledComponents2.default.div.withConfig({
+  displayName: 'GenericTemplate__Wrapper'
+})(['\n  display: flex;\n  flex-direction: column;\n  min-height: 100vh;\n  box-sizing: border-box;\n  background-color: ', ';\n'], _colors.lightBlueA700);
+var Content = _styledComponents2.default.section.withConfig({
+  displayName: 'GenericTemplate__Content'
+})(['\n  width: 100%;\n  box-sizing: border-box;\n  margin: 2rem auto;\n  max-width: 920px;\n']);
+var GenericTemplate = function GenericTemplate(_ref) {
+  var header = _ref.header,
+      children = _ref.children,
+      props = _objectWithoutProperties(_ref, ['header', 'children']);
+
+  return _react2.default.createElement(
+    Wrapper,
+    props,
+    header,
+    _react2.default.createElement(
+      Content,
+      null,
+      children
+    )
+  );
+};
+
+GenericTemplate.propTypes = {
+  children: _propTypes2.default.any.isRequired,
+  header: _propTypes2.default.any.isRequired
+};
+
+var _default = GenericTemplate;
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(Wrapper, 'Wrapper', '/Users/anas/workspace/ritualy/src/components/templates/GenericTemplate/index.js');
+
+  __REACT_HOT_LOADER__.register(Content, 'Content', '/Users/anas/workspace/ritualy/src/components/templates/GenericTemplate/index.js');
+
+  __REACT_HOT_LOADER__.register(GenericTemplate, 'GenericTemplate', '/Users/anas/workspace/ritualy/src/components/templates/GenericTemplate/index.js');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/anas/workspace/ritualy/src/components/templates/GenericTemplate/index.js');
+}();
+
+;
