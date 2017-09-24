@@ -1,5 +1,7 @@
-const MockChildren = () => <div className="mock-children"></div>
+import React from 'react'
 
-MockChildren.displayName = "MockChildren"
+const MockChildren = () => <div className="mock-children" />
+
+MockChildren.displayName = 'MockChildren'
 
 export default MockChildren

@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import { Header } from 'components'
 
 import { lightBlueA700 } from 'material-ui/styles/colors'
 
@@ -29,7 +28,7 @@ const GenericTemplate = ({ header, children, ...props }) => {
 
 GenericTemplate.propTypes = {
   children: PropTypes.any.isRequired,
-  header: PropTypes.any.isRequired
-};
+  header: PropTypes.any.isRequired,
+}
 
 export default GenericTemplate

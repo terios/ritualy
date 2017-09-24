@@ -1,16 +1,14 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react'
+import styled from 'styled-components'
 
 const Wrapper = styled.div`
   margin-bottom: 20px;
-`;
+`
 
-const Header = props => {
+const Roulette = (props) => {
   return (
-    <Wrapper>
+    <Wrapper {...props} />
+  )
+}
 
-    </Wrapper>
-  );
-};
-
-export default Header;
+export default Roulette

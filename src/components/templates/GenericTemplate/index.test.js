@@ -4,10 +4,10 @@ import { shallow, mount } from 'enzyme'
 import GenericTemplate from '.'
 
 
-const wrap = (props = {}) => shallow(<GenericTemplate header='header' {...props}>test</GenericTemplate>)
+const wrap = (props = {}) => shallow(<GenericTemplate header="header" {...props}>test</GenericTemplate>)
 
 it('mounts', () => {
-  mount(<GenericTemplate header='header'>test</GenericTemplate>)
+  mount(<GenericTemplate header="header">test</GenericTemplate>)
 })
 
 it('should have children', () => {
