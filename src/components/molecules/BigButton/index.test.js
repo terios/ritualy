@@ -3,6 +3,8 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import BigButton from '.'
 
-it('mounts', () => {
-  shallow(<BigButton />)
+const roll = jest.fn()
+
+it('shallow', () => {
+  shallow(<BigButton roll={roll} />)
 })
