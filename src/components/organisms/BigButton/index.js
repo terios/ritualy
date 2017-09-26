@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
 import RaisedButton from 'material-ui/RaisedButton'
-import { red400 } from 'material-ui/styles/colors'
+import { red400, grey50 } from 'material-ui/styles/colors'
 
 const Wrapper = styled(RaisedButton)`
 `
@@ -11,7 +11,6 @@ const Wrapper = styled(RaisedButton)`
 const OverideButtonContainer = {
   width: 250,
   height: 250,
-  color: 'white',
 }
 
 const OverButtonStyle = {
@@ -20,7 +19,7 @@ const OverButtonStyle = {
 
 const BigButton = (props) => {
   return (
-    <Wrapper onClick={props.roll} label="GO" labelColor="white" style={OverideButtonContainer} backgroundColor={red400} labelStyle={OverButtonStyle} />
+    <Wrapper onClick={props.roll} label="GO" labelColor={grey50} style={OverideButtonContainer} backgroundColor={red400} labelStyle={OverButtonStyle} />
   )
 }
 

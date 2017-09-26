@@ -2,12 +2,13 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { GenericTemplate, Header, BigButton } from 'components'
-
+import { GenericTemplate, Header } from 'components'
+import { BigButton } from 'containers'
 
 const Wrapper = styled.div`
   text-align: -webkit-center;
 `
+
 
 const HomePage = () => {
   return (
