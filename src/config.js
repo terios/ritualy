@@ -1,4 +1,6 @@
 const merge = require('lodash/merge')
+const local = require('../configs/local') || {}
+const categories = require('../configs/categories') || {}
 
 const config = {
   all: {
@@ -6,13 +8,27 @@ const config = {
     isDev: process.env.NODE_ENV !== 'production',
     basename: process.env.PUBLIC_PATH,
     isBrowser: typeof window !== 'undefined',
-    apiUrl: 'https://jsonplaceholder.typicode.com',
+    apis: {
+      default: '/',
+      root: 'https://api.foursquare.com/v2',
+      lookup: '/venues/explore',
+    },
+    foursquare: {
+      prefix: 'https://igx.4sqi.net/img/general/',
+      sizes: {
+        list: '300x300'
+      }
+    }
   },
   test: {},
   development: {},
   production: {
-    apiUrl: 'https://jsonplaceholder.typicode.com',
+    apis: {
+      default: '/',
+      root: 'https://api.foursquare.com/v2',
+      lookup: '/venues/explore',
+    },
   },
 }
 
-module.exports = merge(config.all, config[config.all.env])
+module.exports = merge(config.all, config[config.all.env], local, categories)

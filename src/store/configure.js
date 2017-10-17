@@ -11,8 +11,8 @@ const devtools = isDev && isBrowser && window.devToolsExtension
   : () => fn => fn
 
 const configureStore = (initialState, services = {}) => {
+  // const sagaMiddleware = createSagaMiddleware()
   const sagaMiddleware = createSagaMiddleware()
-
   const enhancers = [
     applyMiddleware(
       ...middlewares,
@@ -20,7 +20,6 @@ const configureStore = (initialState, services = {}) => {
     ),
     devtools(),
   ]
-
   const store = createStore(reducer, initialState, compose(...enhancers))
   let sagaTask = sagaMiddleware.run(sagas, services)
 
@@ -37,7 +36,6 @@ const configureStore = (initialState, services = {}) => {
       })
     })
   }
-
   return store
 }
 

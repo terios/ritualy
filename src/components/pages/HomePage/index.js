@@ -1,9 +1,8 @@
-// https://github.com/diegohaz/arc/wiki/Atomic-Design
 import React from 'react'
 import styled from 'styled-components'
 
 import { GenericTemplate, Header } from 'components'
-import { BigButton } from 'containers'
+import { Roulette } from 'containers'
 
 const Wrapper = styled.div`
   text-align: -webkit-center;
@@ -14,7 +13,7 @@ const HomePage = () => {
   return (
     <GenericTemplate header={<Header />}>
       <Wrapper>
-        <BigButton />
+        <Filters />
       </Wrapper>
     </GenericTemplate>
   )

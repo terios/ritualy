@@ -1,11 +1,11 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
-import { BigButton } from 'components'
+import { Roulette } from 'components'
 
 const roll = () => {
   return null
 }
-storiesOf('BigButton', module)
+storiesOf('Roulette', module)
   .add('default', () => (
-    <BigButton roll={roll} />
+    <Roulette roll={roll} />
   ))
