@@ -4,7 +4,6 @@ import AppBar from 'material-ui/AppBar'
 import IconButton from 'material-ui/IconButton'
 
 const Wrapper = styled(AppBar)`
-  margin-bottom: 20px;
 `
 const overideStyle = {
   container:{
