@@ -17,17 +17,20 @@ const Wrapper = styled.div`
 
 const ListItems = props => (
   <Wrapper>
-    <Card />
-    <Card />
-    <Card />
-    <Card />
-    <Card />
-    <Card />
+    {
+      props.items.map((item) => (
+        <Card
+          key={item.referralId}
+          title={item.venue.name}
+          rating={<span>rating <b>{item.venue.rating}</b></span>}
+          picture={getImageForList(item.venue.photos.groups)}
+        />
+      ))
+    }
   </Wrapper>
 )
 
 ListItems.propTypes = {
-  // title: PropTypes.string.isRequired,
-  // tilesData: PropTypes.array,
+  items: PropTypes.array,
 }
 export default ListItems

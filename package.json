@@ -20,7 +20,6 @@
   "jest": {
     "moduleDirectories": [
       "src",
-      "src-example",
       "node_modules"
     ],
     "moduleNameMapper": {

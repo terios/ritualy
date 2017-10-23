@@ -1,7 +1,7 @@
-import React from 'react';
+import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
-import FlatButton from 'material-ui/FlatButton';
+import { CardMedia, CardTitle } from 'material-ui/Card'
 
 const CardWrapper = styled.div`
   width: 100%;
@@ -30,13 +30,18 @@ const ImageWrapper = styled.img`
   }
 `
 
-const CardComponent = () => (
+const CardComponent = (props) => (
   <CardWrapper>
     <CardMedia>
-      <ImageWrapper src="http://blueberrybuilders.com/wp-content/uploads/2017/06/BBeastone_004-500x500.jpg" alt="" />
+      <ImageWrapper src={props.picture} alt="" />
     </CardMedia>
-    <CardTitleWrapper title="Card title" subtitle="Card subtitle" />
+    <CardTitleWrapper title={props.title} />
   </CardWrapper>
-);
+)
 
-export default CardComponent;
+CardComponent.propTypes = {
+  title: PropTypes.string.isRequired,
+  picture: PropTypes.string.isRequired,
+}
+
+export default CardComponent

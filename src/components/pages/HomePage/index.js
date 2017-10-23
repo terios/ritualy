@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { GenericTemplate, Header, Filters, ListItems } from 'components'
-import { Roulette } from 'containers'
+import { GenericTemplate, Header } from 'components'
+import { Filters, LookupList } from 'containers'
 import layout from 'utils/LayoutGenerator';
 
 const Wrapper = styled.div`
@@ -20,7 +20,7 @@ const HomePage = () => {
         <OnDesktop>
           <Filters />
         </OnDesktop>
-        <ListItems />
+        <LookupList />
       </Wrapper>
     </GenericTemplate>
   )

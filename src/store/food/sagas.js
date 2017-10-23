@@ -16,7 +16,6 @@ const prepareQuery = ({ category }) => ({
 export function* fetchPlacesAsync(api, filters = {}, { thunk }) {
   try {
     const places = yield call([api, api.get], `${apis.root}${apis.lookup}`, { params: prepareQuery(filters) })
-    console.log('RESULTS', places);
     const results = {
       ...places.response.groups['0'],
       title: places.response.headerFullLocation
