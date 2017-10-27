@@ -20,7 +20,6 @@
   "jest": {
     "moduleDirectories": [
       "src",
-      "src-example",
       "node_modules"
     ],
     "moduleNameMapper": {
@@ -79,11 +78,14 @@
     "prop-types": "^15.5.8",
     "query-string": "^5.0.0",
     "react": "^16.0.0",
+    "react-break": "^1.3.0",
     "react-dom": "^16.0.0",
+    "react-google-maps": "^9.2.0",
     "react-hot-loader": "3.0.0-beta.6",
-    "react-modal": "^2.0.6",
+    "react-modal": "^3.0.4",
     "react-redux": "^5.0.1",
     "react-router-dom": "^4.1.1",
+    "react-stars": "^2.2.4",
     "react-tap-event-plugin": "^3.0.2",
     "redux": "^3.6.0",
     "redux-form": "^7.0.0",

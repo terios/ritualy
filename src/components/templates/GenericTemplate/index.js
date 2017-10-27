@@ -26,6 +26,7 @@ const GenericTemplate = ({ header, children, ...props }) => {
 GenericTemplate.propTypes = {
   children: PropTypes.any.isRequired,
   header: PropTypes.any.isRequired,
+  floating: PropTypes.any,
 }
 
 export default GenericTemplate

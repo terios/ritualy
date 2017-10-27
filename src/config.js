@@ -16,7 +16,7 @@ const config = {
     foursquare: {
       prefix: 'https://igx.4sqi.net/img/general/',
       sizes: {
-        list: '300x300'
+        list: '500x250'
       }
     }
   },

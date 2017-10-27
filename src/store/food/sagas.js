@@ -3,20 +3,20 @@ import { keys, apis } from 'config'
 import * as actions from './actions'
 
 
-const prepareQuery = ({ category }) => ({
+const prepareQuery = ({ category, keyword }) => ({
     client_id: keys.client_id,
     client_secret: keys.client_secret,
     ll: '52.531677,13.381777',
     v: '20170101',
     limit: 10,
     categoryId: category,
+    query: keyword,
     venuePhotos:1,
   })
 
 export function* fetchPlacesAsync(api, filters = {}, { thunk }) {
   try {
     const places = yield call([api, api.get], `${apis.root}${apis.lookup}`, { params: prepareQuery(filters) })
-    console.log('RESULTS', places);
     const results = {
       ...places.response.groups['0'],
       title: places.response.headerFullLocation

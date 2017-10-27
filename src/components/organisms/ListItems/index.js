@@ -1,47 +1,41 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { GridList, GridTile } from 'material-ui/GridList'
-import IconButton from 'material-ui/IconButton'
-import Subheader from 'material-ui/Subheader'
-import StarBorder from 'material-ui/svg-icons/toggle/star-border'
-
+import styled from 'styled-components'
+import CircularProgress from 'material-ui/CircularProgress';
+import { Card } from 'components'
 import { getImageForList } from 'services/foursquare'
 
-const styles = {
-  root: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'space-around',
-  },
-  gridList: {
-    width: 500,
-    overflowY: 'auto',
-  },
-}
+const Wrapper = styled.div`
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px;
+  justify-content: space-evenly;
+`
 
 const ListItems = props => (
-  <div style={styles.root}>
-    <GridList
-      cellHeight={180}
-      style={styles.gridList}
-    >
-      <Subheader>{props.title}</Subheader>
-      {props.tilesData.map((tile, index) => (
-        <GridTile
-          key={tile.referralId}
-          title={tile.venue.name}
-          subtitle={<span>rating <b>{tile.venue.rating}</b></span>}
-          actionIcon={<IconButton><StarBorder color="white" /></IconButton>}
-        >
-          <img src={getImageForList(tile.venue.photos.groups)} alt={index} />
-        </GridTile>
-      ))}
-    </GridList>
-  </div>
+  <Wrapper>
+    {
+      !props.loading &&
+      props.items.map((item) => (
+        <Card
+          key={item.referralId}
+          title={item.venue.name}
+          rating={item.venue.rating}
+          picture={getImageForList(item.venue.photos.groups)}
+        />
+      ))
+    }
+    {
+      props.loading && (
+        <CircularProgress size={80} thickness={5} />
+      )
+    }
+  </Wrapper>
 )
 
 ListItems.propTypes = {
-  title: PropTypes.string.isRequired,
-  tilesData: PropTypes.array,
+  items: PropTypes.array,
+  loading: PropTypes.bool,
 }
 export default ListItems
