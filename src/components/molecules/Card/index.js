@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import ReactStars from 'react-stars'
 import { CardMedia, CardTitle } from 'material-ui/Card'
 
 const CardWrapper = styled.div`
@@ -30,17 +31,26 @@ const ImageWrapper = styled.img`
   }
 `
 
+const getRatingComponent = rating => (
+  <ReactStars
+    count={5}
+    size={24}
+    edit={false}
+    value={rating}
+    color2={'#ffd700'} />
+)
 const CardComponent = (props) => (
   <CardWrapper>
     <CardMedia>
       <ImageWrapper src={props.picture} alt="" />
     </CardMedia>
-    <CardTitleWrapper title={props.title} />
+    <CardTitleWrapper title={props.title} subtitle={getRatingComponent(props.rating/2)}/>
   </CardWrapper>
 )
 
 CardComponent.propTypes = {
   title: PropTypes.string.isRequired,
+  rating: PropTypes.number,
   picture: PropTypes.string.isRequired,
 }
 

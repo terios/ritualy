@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
 import AppBar from 'material-ui/AppBar'
-import IconButton from 'material-ui/IconButton'
 
 const Wrapper = styled(AppBar)`
 `
@@ -10,15 +10,18 @@ const overideStyle = {
     position: 'fixed'
   },
 }
-const Header = () => {
+const Header = (props) => {
   return (
     <Wrapper
       title="Ritualy"
       zDepth={0}
       style={overideStyle.container}
-      iconElementRight={<IconButton><i className="material-icons">filter_list</i></IconButton>}
+      iconElementRight={props.righElm}
+      onRightIconButtonTouchTap={props.righElmAction}
     />
   )
 }
 
+Header.propTypes = {
+}
 export default Header

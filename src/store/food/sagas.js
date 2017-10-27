@@ -3,13 +3,14 @@ import { keys, apis } from 'config'
 import * as actions from './actions'
 
 
-const prepareQuery = ({ category }) => ({
+const prepareQuery = ({ category, keyword }) => ({
     client_id: keys.client_id,
     client_secret: keys.client_secret,
     ll: '52.531677,13.381777',
     v: '20170101',
     limit: 10,
     categoryId: category,
+    query: keyword,
     venuePhotos:1,
   })
 
