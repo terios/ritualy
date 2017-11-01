@@ -1,9 +1,10 @@
 import { put, takeEvery, call } from 'redux-saga/effects'
 import { keys, apis } from 'config'
+import { getCenterFromBounds } from 'services/map'
 import * as actions from './actions'
 
 
-const prepareQuery = ({ category, keyword }) => ({
+const prepareQuery = ({ category, keyword, coords }) => ({
     client_id: keys.client_id,
     client_secret: keys.client_secret,
     ll: '52.531677,13.381777',
@@ -12,14 +13,19 @@ const prepareQuery = ({ category, keyword }) => ({
     categoryId: category,
     query: keyword,
     venuePhotos:1,
+    ll: `${coords.lat},${coords.lng}`
   })
 
 export function* fetchPlacesAsync(api, filters = {}, { thunk }) {
   try {
-    const places = yield call([api, api.get], `${apis.root}${apis.lookup}`, { params: prepareQuery(filters) })
+    const places = yield call([api, api.get], `${apis.root}${apis.lookup}`, { params: prepareQuery(filters), noHeaders: true })
     const results = {
       ...places.response.groups['0'],
-      title: places.response.headerFullLocation
+      title: places.response.headerFullLocation,
+      bounds: {
+        ...places.response.suggestedBounds,
+        center: getCenterFromBounds(places.response.suggestedBounds),
+      },
     }
     yield put(actions.fetchPlaces({ response: results, thunk }))
   } catch (e) {

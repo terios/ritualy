@@ -1,13 +1,13 @@
 // https://github.com/diegohaz/arc/wiki/Testing-components
 import React from 'react'
 import { shallow, mount } from 'enzyme'
-import GenericTemplate from '.'
 
+import GenericTemplate from '.'
 
 const wrap = (props = {}) => shallow(<GenericTemplate header="header" {...props}>test</GenericTemplate>)
 
 it('mounts', () => {
-  mount(<GenericTemplate header="header">test</GenericTemplate>)
+  mount(<GenericTemplate header={<div>header</div>}>test</GenericTemplate>)
 })
 
 it('should have children', () => {

@@ -22,22 +22,5 @@
   <main id="app"></main>
   <!-- JS file will be automatically added here by html-webpack-plugin -->
 
-    <script>
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', function() {
-          navigator.serviceWorker.register('service-worker.js').then(function(registration) {
-            // Registration was successful
-            console.log('ServiceWorker registration successful with scope: ', registration.scope);
-          }, function(err) {
-            // registration failed :(
-            console.log('ServiceWorker registration failed: ', err);
-          }).catch(function(err) {
-            console.log(err)
-          });
-        });
-      } else {
-        console.log('service worker is not supported');
-      }
-    </script>
-</body>
+<script type="text/javascript" src="/vendor.4f29dde20bbdaf4717b7.js"></script><script type="text/javascript" src="/app.e87a2065313c6f0911b4.js"></script></body>
 </html>

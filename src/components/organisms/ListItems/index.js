@@ -9,7 +9,6 @@ const Wrapper = styled.div`
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  padding: 20px;
   justify-content: space-evenly;
 `
 

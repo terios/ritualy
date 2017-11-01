@@ -9,8 +9,9 @@ import CircularProgress from 'material-ui/CircularProgress';
 import { ListItems, MapView, FloatingButton } from 'components'
 
 const Wrapper = styled.div`
+  width: 100%;
   @media (min-width : 1224px) {
-    width: calc(100% - 360px);
+    width: calc(100% - 320px);
   }
 `
 class LookupListContainer extends Component {
@@ -29,7 +30,7 @@ class LookupListContainer extends Component {
   }
 
   render() {
-    const { loading, places, displayMode } = this.props
+    const { loading, places, displayMode, bounds } = this.props
     const { changeDisplayTo } = this.state
     return (
         <Wrapper>
@@ -38,7 +39,7 @@ class LookupListContainer extends Component {
             )
           }
           { displayMode ==='map' && (
-              <MapView />
+              <MapView items={places} bounds={bounds} />
             )
           }
           <FloatingButton onClick={this.handleDisplayChange} icon={changeDisplayTo} />
@@ -53,6 +54,7 @@ LookupListContainer.propTypes = {
 
 const mapStateToProps = state => ({
   places: fromFood.getPlaces(state),
+  bounds: fromFood.getBounds(state),
   displayMode: fromUi.getDisplayMode(state),
   loading: isPending(state, 'fetchPlaces'),
   failed: hasFailed(state, 'fetchPlaces'),

@@ -7,7 +7,7 @@ import { isPending, hasFailed } from 'redux-saga-thunk'
 import { fetchPlacesAsync } from 'store/actions'
 import { fromFood } from 'store/selectors'
 import CircularProgress from 'material-ui/CircularProgress';
-import { Filters, FiltersHOC } from 'components'
+import { Filters, FiltersHOC, GeoLocationHOC } from 'components'
 
 class FiltersContainer extends Component {
 
@@ -37,5 +37,6 @@ const mapDispatchToProps = dispatch => ({
 
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
+  GeoLocationHOC({}),
   FiltersHOC,
 )(FiltersContainer)

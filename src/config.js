@@ -18,7 +18,10 @@ const config = {
       sizes: {
         list: '500x250'
       }
-    }
+    },
+    googleMaps: {
+      url: 'https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places'
+    },
   },
   test: {},
   development: {},

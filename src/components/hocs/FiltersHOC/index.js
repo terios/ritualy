@@ -1,9 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+function getDisplayName(WrappedComponent) {
+    return `FilterWithActions(${WrappedComponent.displayName || WrappedComponent.name || 'Component'})`;
+}
 
 const FilterWithActions = (WrappedComponent) => {
-  return class extends React.Component {
+  let result = class extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
@@ -23,7 +26,8 @@ const FilterWithActions = (WrappedComponent) => {
 
     lookup = () => {
       const { category, keyword } = this.state
-      this.props.roll({ category, keyword })
+      const { coords } = this.props
+      this.props.roll({ category, keyword, coords })
     }
     render() {
       const { category, currentCategory, keyword } = this.state
@@ -40,6 +44,8 @@ const FilterWithActions = (WrappedComponent) => {
       )
     }
   };
+  result.displayName = getDisplayName(WrappedComponent);
+  return result;
 }
 
 export default FilterWithActions
