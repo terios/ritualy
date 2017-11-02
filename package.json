@@ -16,7 +16,7 @@
     "build:copy": "copyfiles -u 1 public/* public/**/* dist",
     "prebuild": "npm run build:clean && npm run build:copy",
     "build": "npm run env:prod -- webpack",
-    "deploy": "npm run firebase deploy"
+    "deploy": "npm run env:prod -- webpack && npm run firebase deploy"
   },
   "jest": {
     "setupTestFrameworkScriptFile": "./node_modules/jest-enzyme/lib/index.js",

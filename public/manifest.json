@@ -1,0 +1,15 @@
+{
+  "short_name": "Ritualy",
+  "name": "hungry? got some ideas here",
+  "icons": [
+    {
+      "src":"icon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/?utm_source=homescreen",
+  "background_color": "#42BAB0",
+  "theme_color": "#42BAB0",
+  "display": "standalone"
+}

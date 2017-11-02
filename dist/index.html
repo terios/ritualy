@@ -4,13 +4,20 @@
   <title>ARc - Atomic React</title>
   <meta charset="UTF-8">
   <meta name="description" content="React starter kit based on Atomic Design with React Router, Webpack, Redux, Server Side Rendering and more">
+  <link rel="manifest" href="/manifest.json">
+  <!-- Tell the browser it's a PWA -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <!-- Tell iOS it's a PWA -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <!-- Make sure theme-color is defined -->
+  <meta name="theme-color" content="#536878">
   <meta property="og:site_name" content="ARc">
-  <meta property="og:image" content="https://arc.js.org/thumbnail.png">
+  <meta property="og:image" content="/thumbnail.png">
   <meta property="og:image:type" content="image/png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="https://arc.js.org/icon.png" />
+  <link rel="icon" href="/icon.png" />
 
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -19,8 +26,52 @@
 </head>
 <body style="margin: 0; font-family: 'Roboto', sans-serif; height: auto;">
 
-  <main id="app"></main>
+<style type="text/css">
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+    }
+    .App {
+      text-align: center;
+    }
+    .App-header {
+      background-color: #222;
+      height: 150px;
+      padding: 20px;
+      color: white;
+    }
+    .App-intro {
+      font-size: large;
+    }
+  </style>
+  <main id="app">
+    <div class="App">
+          <div class="App-header">
+            <h2>Home</h2>
+          </div>
+          <p class="App-intro">
+            Loading site...
+          </p>
+  </main>
   <!-- JS file will be automatically added here by html-webpack-plugin -->
 
-<script type="text/javascript" src="/vendor.4f29dde20bbdaf4717b7.js"></script><script type="text/javascript" src="/app.e87a2065313c6f0911b4.js"></script></body>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+          navigator.serviceWorker.register('service-worker.js').then(function(registration) {
+            // Registration was successful
+            console.log('ServiceWorker registration successful with scope: ', registration.scope);
+          }, function(err) {
+            // registration failed :(
+            console.log('ServiceWorker registration failed: ', err);
+          }).catch(function(err) {
+            console.log(err)
+          });
+        });
+      } else {
+        console.log('service worker is not supported');
+      }
+    </script>
+<script type="text/javascript" src="/vendor.4f29dde20bbdaf4717b7.js"></script><script type="text/javascript" src="/app.f95aa8edac0e0118eb99.js"></script></body>
 </html>
