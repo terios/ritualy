@@ -7,6 +7,7 @@ import { getImageForList } from 'services/foursquare'
 
 const Wrapper = styled.div`
   width: 100%;
+  padding-top: 20px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;

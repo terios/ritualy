@@ -11,7 +11,6 @@ const FilterWithActions = (WrappedComponent) => {
       super(props);
       this.state = {
         keyword: '',
-        category: 0,
         currentCategory:-1
       };
     }

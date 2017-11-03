@@ -12,12 +12,17 @@ const Wrapper = styled.div`
   padding: 20px 0px 0 20px;
   text-align: left;
 `
+const style = {
+  buttonOveride: {
+    paddingRight: 20
+  },
+};
 
 const SideFilters = props => {
   return(
     <Wrapper>
       <Filters {...props} />
-      <RaisedButton onClick={props.lookup} label="Feed me!" fullWidth secondary />
+      <RaisedButton onClick={props.lookup} style={style.buttonOveride} label="Feed me!" fullWidth secondary />
     </Wrapper>
   )
 }

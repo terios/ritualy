@@ -11,6 +11,10 @@ import { Filters, FiltersHOC, GeoLocationHOC } from 'components'
 
 class FiltersContainer extends Component {
 
+  componentWillUpdate(nextProps){
+    const { category, keyword, coords } = nextProps
+    this.props.roll({ category, keyword, coords });
+  }
   renderChildren() {
     const props = this.props
     return React.Children.map(this.props.children, child => {

@@ -75,12 +75,7 @@ const GeoLocationHOC = ({
 export const GeolocatedPropTypes = {
     coords: PropTypes.shape({
         latitude: PropTypes.number,
-        longitude: PropTypes.number,
-        altitude: PropTypes.number,
-        accuracy: PropTypes.number,
-        altitudeAccuracy: PropTypes.number,
-        heading: PropTypes.number,
-        speed: PropTypes.number,
+        longitude: PropTypes.number
     }),
     isGeolocationAvailable: PropTypes.bool,
     isGeolocationEnabled: PropTypes.bool,

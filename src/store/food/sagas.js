@@ -1,23 +1,24 @@
 import { put, takeEvery, call } from 'redux-saga/effects'
 import { keys, apis } from 'config'
+import { initialFilter } from './selectors'
 import { getCenterFromBounds } from 'services/map'
 import * as actions from './actions'
 
 
-const prepareQuery = ({ category, keyword, coords }) => ({
-    client_id: keys.client_id,
-    client_secret: keys.client_secret,
-    ll: '52.531677,13.381777',
-    v: '20170101',
-    limit: 10,
-    categoryId: category,
-    query: keyword,
-    venuePhotos:1,
-    ll: `${coords.lat},${coords.lng}`
-  })
+const prepareQuery = ({ category, keyword, coords }) => {
+    return {
+      ...initialFilter,
+      ll: `${coords.lat},${coords.lng}`,
+      limit: 15,
+      categoryId: category,
+      query: keyword,
+      venuePhotos:1,
+    }
+  }
 
 export function* fetchPlacesAsync(api, filters = {}, { thunk }) {
   try {
+    console.log('------> ', prepareQuery(filters));
     const places = yield call([api, api.get], `${apis.root}${apis.lookup}`, { params: prepareQuery(filters), noHeaders: true })
     const results = {
       ...places.response.groups['0'],

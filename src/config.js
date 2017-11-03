@@ -1,6 +1,6 @@
 const merge = require('lodash/merge')
 const local = require('../configs/local') || {}
-const categories = require('../configs/categories') || {}
+const categoriesConfig = require('../configs/categories') || {}
 
 const config = {
   all: {
@@ -33,5 +33,9 @@ const config = {
     },
   },
 }
-
-module.exports = merge(config.all, config[config.all.env], local, categories)
+module.exports = merge(
+  config.all,
+  config[config.all.env],
+  local,
+  categoriesConfig,
+)
