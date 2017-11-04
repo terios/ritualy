@@ -18,6 +18,7 @@ const Header = (props) => {
       style={overideStyle.container}
       iconElementRight={props.righElm}
       onRightIconButtonTouchTap={props.righElmAction}
+      iconElementLeft={props.iconElementLeft}
     />
   )
 }

@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import IconButton from 'material-ui/IconButton'
-
 import {
   GenericTemplate,
   Header,
