@@ -1,4 +1,4 @@
-import { pink900, indigo900, red400 } from 'material-ui/styles/colors'
+import { red400 } from 'material-ui/styles/colors'
 
 
 export default {

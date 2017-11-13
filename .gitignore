@@ -61,3 +61,4 @@ typings/
 
 # local configs
 configs/local.js
+configs/firebase.js

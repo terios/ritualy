@@ -6,7 +6,6 @@ import TextField from 'material-ui/TextField';
 import Slider from 'material-ui/Slider';
 
 import MenuItem from 'material-ui/MenuItem'
-import { cyan500, pink600, grey50 } from 'material-ui/styles/colors'
 import { categories } from 'config'
 import { Title2, Label, FieldComponent } from 'components'
 
@@ -32,7 +31,7 @@ class Filters extends Component {
       category,
       handleCategoryChange,
       handleOnType,
-      keyword
+      keyword,
      } = this.props
     return (
       <Wrapper>
@@ -58,13 +57,13 @@ class Filters extends Component {
             style={OverrideButtonStyle.general}
           />
           <FieldComponent>
-            <Label text='Search radius' />
+            <Label text="Search radius" />
             <Slider
               min={0}
               max={100}
               step={1}
               value={30}
-              />
+            />
           </FieldComponent>
         </FiltersWrapper>
       </Wrapper>

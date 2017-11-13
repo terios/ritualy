@@ -10,6 +10,7 @@ import configureStore from 'store/configure'
 import api from 'services/api'
 import App from 'components/App'
 
+import firebase from 'firebase'
 import injectTapEventPlugin from 'react-tap-event-plugin'
 
 injectTapEventPlugin()

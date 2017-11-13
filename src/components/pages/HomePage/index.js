@@ -3,13 +3,12 @@ import styled from 'styled-components'
 import IconButton from 'material-ui/IconButton'
 import {
   GenericTemplate,
-  Header,
   Modal,
   SideFilters,
   FiltersMobile,
   FloatingButton
 } from 'components'
-import { Filters as FiltersContainer, LookupList } from 'containers'
+import { Filters as FiltersContainer, LookupList, Header, Drawer } from 'containers'
 import layout from 'utils/LayoutGenerator';
 
 const Wrapper = styled.div`
@@ -32,8 +31,9 @@ class HomePage extends Component {
   }
   getHeaderComponent() {
     return <Header
+      title='OKLA'
       righElm={<IconButton><i className="material-icons">filter_list</i></IconButton>}
-      righElmAction={this.openFilterModal}
+      rightElmAction={this.openFilterModal}
     />
   }
   render() {
@@ -41,6 +41,7 @@ class HomePage extends Component {
     return (
       <GenericTemplate
         header={this.getHeaderComponent()}
+        drawer={<Drawer />}
         >
         <Wrapper>
           <OnDesktop>

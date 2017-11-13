@@ -1,6 +1,7 @@
 const merge = require('lodash/merge')
 const local = require('../configs/local') || {}
 const categoriesConfig = require('../configs/categories') || {}
+const firebaseConfig = require('../configs/firebase') || {}
 
 const config = {
   all: {
@@ -16,8 +17,8 @@ const config = {
     foursquare: {
       prefix: 'https://igx.4sqi.net/img/general/',
       sizes: {
-        list: '500x250'
-      }
+        list: '500x250',
+      },
     },
     googleMaps: {
       url: 'https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places'
@@ -38,4 +39,5 @@ module.exports = merge(
   config[config.all.env],
   local,
   categoriesConfig,
+  firebaseConfig,
 )

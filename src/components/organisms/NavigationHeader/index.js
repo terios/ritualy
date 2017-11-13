@@ -6,23 +6,17 @@ import AppBar from 'material-ui/AppBar'
 const Wrapper = styled(AppBar)`
 `
 
-const overideStyle = (props) => {
-    let container = {
-        position: 'fixed'
-    }
-    if(props.transparent){
-      container.backgroundColor = 'transparent'
-    }
-    return {
-      container: container,
-    }
-  }
+const overideStyle = (props) => ({
+    position: 'fixed',
+    backgroundColor: 'transparent'
+})
+
 const Header = (props) => {
   return (
     <Wrapper
       title={props.title}
       zDepth={0}
-      style={overideStyle(props).container}
+      style={overideStyle(props)}
       iconElementRight={props.righElm}
       onRightIconButtonTouchTap={props.rightElmAction}
       iconElementLeft={props.iconElementLeft}
@@ -32,10 +26,5 @@ const Header = (props) => {
 }
 
 Header.propTypes = {
-  title: PropTypes.string.isRequired,
-  righElm: PropTypes.node,
-  rightElmAction: PropTypes.func,
-  iconElementLeft: PropTypes.node,
-  leftElmAction: PropTypes.func,
 }
 export default Header
