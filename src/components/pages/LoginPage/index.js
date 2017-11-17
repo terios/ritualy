@@ -7,6 +7,8 @@ import { red400 } from 'material-ui/styles/colors'
 import Paper from 'material-ui/Paper'
 import NavigationLeft from 'material-ui/svg-icons/navigation/chevron-left';
 
+import firebase from 'firebase'
+
 import {
   GenericTemplate,
   Logo,
@@ -41,6 +43,17 @@ class LoginPage extends Component {
       />
     )
   }
+  handleClick(){
+    console.log('clicked');
+    /*
+    const itemsRef = firebase.database().ref('broujoulachat');
+    const item = {
+      title: 'title',
+      user: 'user'
+    }
+    itemsRef.push(item);
+    */
+  }
   render() {
     const { history } = this.props
     return (
@@ -49,7 +62,7 @@ class LoginPage extends Component {
         backgroundColor={red400}
       >
         <Logo />
-        <Wrapper>
+        <Wrapper onClick={this.handleClick}>
           <LoginGates />
         </Wrapper>
       </GenericTemplate>
