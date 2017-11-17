@@ -15,13 +15,9 @@ const LogoWrapper = styled.div`
   margin-bottom: 100px;
 `
 
-const ImgWrapper = styled.img`
-  height: 100px;
-`
-
 const Logo = (props) => (
   <LogoWrapper>
-    <ImgWrapper src='/logo.png'/>
+    <div className='white-logo' />
   </LogoWrapper>
 )
 

@@ -13,6 +13,8 @@ import App from 'components/App'
 import firebase from 'firebase'
 import injectTapEventPlugin from 'react-tap-event-plugin'
 
+import './less/index.less'
+
 injectTapEventPlugin()
 
 const store = configureStore({}, { api: api.create() })

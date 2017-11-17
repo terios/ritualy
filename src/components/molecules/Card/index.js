@@ -4,6 +4,8 @@ import styled from 'styled-components'
 import ReactStars from 'react-stars'
 import { CardMedia, CardTitle } from 'material-ui/Card'
 
+import { yellow500 } from 'material-ui/styles/colors'
+
 const CardWrapper = styled.div`
   width: 100%;
   padding-bottom: 20px;
@@ -37,14 +39,15 @@ const getRatingComponent = rating => (
     size={24}
     edit={false}
     value={rating}
-    color2={'#ffd700'} />
+    color2={yellow500}
+  />
 )
-const CardComponent = (props) => (
+const CardComponent = props => (
   <CardWrapper>
     <CardMedia>
       <ImageWrapper src={props.picture} alt="" />
     </CardMedia>
-    <CardTitleWrapper title={props.title} subtitle={getRatingComponent(props.rating/2)}/>
+    <CardTitleWrapper title={props.title} subtitle={getRatingComponent(props.rating / 2)} />
   </CardWrapper>
 )
 

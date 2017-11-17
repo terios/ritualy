@@ -17,7 +17,7 @@ const ListItems = props => (
   <Wrapper>
     {
       !props.loading &&
-      props.items.map((item) => (
+      props.items.map(item => (
         <Card
           key={item.referralId}
           title={item.venue.name}
