@@ -12,7 +12,7 @@ export default (state = initialState, { type, response, meta }) => {
         meta,
         places: response.items ? response.items : [],
         title: response.title,
-        bounds: response.bounds
+        bounds: response.bounds,
       }
     default:
       return state

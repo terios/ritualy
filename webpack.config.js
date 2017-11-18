@@ -26,7 +26,7 @@ const extractText = require('@webpack-blocks/extract-text')
 const autoprefixer = require('autoprefixer')
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const SpritesmithPlugin = require('webpack-spritesmith');
+const SpritesmithPlugin = require('webpack-spritesmith')
 const happypack = require('webpack-blocks-happypack')
 
 
@@ -36,13 +36,6 @@ const sourceDir = process.env.SOURCE || 'src'
 const publicPath = `/${process.env.PUBLIC_PATH || ''}/`.replace('//', '/')
 const sourcePath = path.join(process.cwd(), sourceDir)
 const outputPath = path.join(process.cwd(), 'dist')
-
-
-const resolveModules = modules => () => ({
-  resolve: {
-    modules: [].concat(modules, ['node_modules']),
-  },
-})
 
 module.exports = createConfig([
   entryPoint({
@@ -66,29 +59,29 @@ module.exports = createConfig([
   match('*.less', { exclude: path.resolve('node_modules') }, [
     postcss({
       plugins: [
-        autoprefixer({ browsers: ['last 2 versions'] })
-      ]
+        autoprefixer({ browsers: ['last 2 versions'] }),
+      ],
     }),
     css(),
-    less({ minimize: true }),    
-    env('production', [extractText()])
+    less({ minimize: true }),
+    env('production', [extractText()]),
   ]),
   match(['*.gif', '*.jpg', '*.jpeg', '*.png', '*.webp'], [
-    file()
+    file(),
   ]),
   addPlugins([
     new SpritesmithPlugin({
       src: {
-          cwd: path.resolve(__dirname, 'src/images'),
-          glob: '*.png'
+        cwd: path.resolve(__dirname, 'src/images'),
+        glob: '*.png',
       },
       target: {
-          image: path.resolve(__dirname, 'public/sprite.png'),
-          css: path.resolve(__dirname, 'src/less/sprite.less')
+        image: path.resolve(__dirname, 'public/sprite.png'),
+        css: path.resolve(__dirname, 'src/less/sprite.less'),
       },
       apiOptions: {
-          cssImageRef: "/sprite.png"
-      }
+        cssImageRef: '/sprite.png',
+      },
     }),
     new HtmlWebpackPlugin({
       inject: true,
@@ -96,7 +89,7 @@ module.exports = createConfig([
     }),
   ]),
   setEnv({
-    NODE_ENV: process.env.NODE_ENV
+    NODE_ENV: process.env.NODE_ENV,
   }),
   env('development', [
     devServer({
@@ -108,14 +101,14 @@ module.exports = createConfig([
       port,
     }),
     devServer.proxy({
-      '/api': { target: 'http://localhost:3000' }
+      '/api': { target: 'http://localhost:3000' },
     }),
-    sourceMaps()
+    sourceMaps(),
   ]),
   env('production', [
     uglify(),
     addPlugins([
       new webpack.LoaderOptionsPlugin({ minimize: true }),
-    ])
-  ])
+    ]),
+  ]),
 ])

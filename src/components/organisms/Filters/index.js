@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import SelectField from 'material-ui/SelectField'
-import TextField from 'material-ui/TextField';
-import Slider from 'material-ui/Slider';
+import TextField from 'material-ui/TextField'
+import Slider from 'material-ui/Slider'
 
 import MenuItem from 'material-ui/MenuItem'
 import { categories } from 'config'

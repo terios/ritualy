@@ -3,7 +3,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import Header from '.'
 
-const dummyFunction = jest.fn();
+const dummyFunction = jest.fn()
 
 it('Shallow', () => {
   shallow(<Header

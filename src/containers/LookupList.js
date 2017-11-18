@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { isPending, hasFailed } from 'redux-saga-thunk'
 import { fetchPlacesAsync, switchDisplay } from 'store/actions'
 import { fromFood, fromUi } from 'store/selectors'
-import CircularProgress from 'material-ui/CircularProgress';
+import CircularProgress from 'material-ui/CircularProgress'
 import { ListItems, MapView, FloatingButton } from 'components'
 
 const Wrapper = styled.div`
@@ -16,15 +16,15 @@ const Wrapper = styled.div`
 `
 class LookupListContainer extends Component {
 
-  constructor(props){
+  constructor(props) {
     super(props)
     this.state = {
-      changeDisplayTo: props.displayMode === 'list' ? 'map' : 'list'
+      changeDisplayTo: props.displayMode === 'list' ? 'map' : 'list',
     }
-    this.handleDisplayChange = this.handleDisplayChange.bind(this);
+    this.handleDisplayChange = this.handleDisplayChange.bind(this)
   }
-  handleDisplayChange(){
-    this.setState({changeDisplayTo: this.props.displayMode})
+  handleDisplayChange() {
+    this.setState({ changeDisplayTo: this.props.displayMode })
     const newDisplayMode = this.props.displayMode === 'list' ? 'map' : 'list'
     this.props.switchDisplay(newDisplayMode)
   }
@@ -33,17 +33,17 @@ class LookupListContainer extends Component {
     const { loading, places, displayMode, bounds } = this.props
     const { changeDisplayTo } = this.state
     return (
-        <Wrapper>
-          { displayMode ==='list' && (
-              <ListItems items={places} loading={loading} />
+      <Wrapper>
+        { displayMode === 'list' && (
+          <ListItems items={places} loading={loading} />
             )
           }
-          { displayMode ==='map' && (
-              <MapView items={places} bounds={bounds} />
+        { displayMode === 'map' && (
+          <MapView items={places} bounds={bounds} />
             )
           }
-          <FloatingButton onClick={this.handleDisplayChange} icon={changeDisplayTo} />
-        </Wrapper>
+        <FloatingButton onClick={this.handleDisplayChange} icon={changeDisplayTo} />
+      </Wrapper>
     )
   }
 }
@@ -61,6 +61,6 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  switchDisplay: (displayMode) => dispatch(switchDisplay(displayMode)),
+  switchDisplay: displayMode => dispatch(switchDisplay(displayMode)),
 })
 export default connect(mapStateToProps, mapDispatchToProps)(LookupListContainer)

@@ -5,7 +5,7 @@ export const initialState = {
   meta: {},
   places: [],
   title: '',
-  bounds: {}
+  bounds: {},
 }
 
 export const initialFilter = {

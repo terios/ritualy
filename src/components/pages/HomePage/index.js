@@ -6,35 +6,35 @@ import {
   Modal,
   SideFilters,
   FiltersMobile,
-  FloatingButton
+  FloatingButton,
 } from 'components'
 import { Filters as FiltersContainer, LookupList, Header, Drawer } from 'containers'
-import layout from 'utils/LayoutGenerator';
+import layout from 'utils/LayoutGenerator'
 
 const Wrapper = styled.div`
   text-align: -webkit-center;
   display: flex;
   flex-direction: row;
 `
-const OnDesktop = layout.is('desktop');
+const OnDesktop = layout.is('desktop')
 
 class HomePage extends Component {
-  constructor(props){
+  constructor(props) {
     super(props)
     this.state = {
-      filterModalOpen: false
+      filterModalOpen: false,
     }
-    this.openFilterModal = this.openFilterModal.bind(this);
+    this.openFilterModal = this.openFilterModal.bind(this)
   }
   openFilterModal() {
-    this.setState({filterModalOpen:!this.state.filterModalOpen})
+    this.setState({ filterModalOpen: !this.state.filterModalOpen })
   }
   getHeaderComponent() {
-    return <Header
-      title='OKLA'
+    return (<Header
+      title="OKLA"
       righElm={<IconButton><i className="material-icons">filter_list</i></IconButton>}
       rightElmAction={this.openFilterModal}
-    />
+    />)
   }
   render() {
     const { filterModalOpen } = this.state
@@ -42,7 +42,7 @@ class HomePage extends Component {
       <GenericTemplate
         header={this.getHeaderComponent()}
         drawer={<Drawer />}
-        >
+      >
         <Wrapper>
           <OnDesktop>
             <FiltersContainer>

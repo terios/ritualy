@@ -5,18 +5,18 @@ import Modal from 'react-modal'
 import RaisedButton from 'material-ui/RaisedButton'
 
 const modalStyle = {
-  content :{
+  content: {
     left: 0,
     right: 0,
     bottom: 0,
   },
-  overlay:{
+  overlay: {
     zIndex: 10,
-  }
+  },
 }
 
-const GenericModal = props => {
-  return(
+const GenericModal = (props) => {
+  return (
     <Modal
       isOpen={props.modalState}
       contentLabel="Modal"
@@ -29,7 +29,7 @@ const GenericModal = props => {
 }
 
 GenericModal.prototype = {
-  modalState: PropTypes.bool.isRequired
+  modalState: PropTypes.bool.isRequired,
 }
 
 export default GenericModal

@@ -8,14 +8,14 @@ const Wrapper = styled.span`
   color: ${grey700};
 `
 
-const Title2 = props => {
+const Title2 = (props) => {
   return (
     <Wrapper>{props.text}</Wrapper>
   )
 }
 
 Title2.propTypes = {
-  text: PropTypes.string.isRequired
+  text: PropTypes.string.isRequired,
 }
 
 export default Title2

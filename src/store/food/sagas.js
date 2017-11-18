@@ -6,15 +6,15 @@ import * as actions from './actions'
 
 
 const prepareQuery = ({ category, keyword, coords }) => {
-    return {
-      ...initialFilter,
-      ll: `${coords.lat},${coords.lng}`,
-      limit: 15,
-      categoryId: category,
-      query: keyword,
-      venuePhotos:1,
-    }
+  return {
+    ...initialFilter,
+    ll: `${coords.lat},${coords.lng}`,
+    limit: 15,
+    categoryId: category,
+    query: keyword,
+    venuePhotos: 1,
   }
+}
 
 export function* fetchPlacesAsync(api, filters = {}, { thunk }) {
   try {

@@ -5,21 +5,21 @@ export const fetchPlaces = ({ thunk, response }) => ({
   type: FETCH_PLACES,
   response,
   meta: {
-    thunk
+    thunk,
   },
 })
 
-export const fetchPlacesAsync = (filters) => ({
+export const fetchPlacesAsync = filters => ({
   type: FETCH_PLACES_ASYNC,
   filters,
   meta: {
-    thunk: 'fetchPlaces'
-  }
+    thunk: 'fetchPlaces',
+  },
 })
 
-export const fetchPlacesErr = ({ err, meta}) => ({
+export const fetchPlacesErr = ({ err, meta }) => ({
   type: 'FETCH_PLACES_ASYNC_ERR',
   payload: err,
   error: true,
-  meta
+  meta,
 })

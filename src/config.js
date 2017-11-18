@@ -21,7 +21,7 @@ const config = {
       },
     },
     googleMaps: {
-      url: 'https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places'
+      url: 'https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places',
     },
   },
   test: {},

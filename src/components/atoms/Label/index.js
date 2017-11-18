@@ -10,14 +10,14 @@ const Wrapper = styled.span`
   color: ${grey700};
 `
 
-const Label = props => {
+const Label = (props) => {
   return (
     <Wrapper>{props.text}</Wrapper>
   )
 }
 
 Label.propTypes = {
-  text: PropTypes.string.isRequired
+  text: PropTypes.string.isRequired,
 }
 
 export default Label

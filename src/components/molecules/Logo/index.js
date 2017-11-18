@@ -15,9 +15,9 @@ const LogoWrapper = styled.div`
   margin-bottom: 100px;
 `
 
-const Logo = (props) => (
+const Logo = props => (
   <LogoWrapper>
-    <div className='white-logo' />
+    <div className="white-logo" />
   </LogoWrapper>
 )
 

@@ -6,12 +6,12 @@ import { teal500 } from 'material-ui/styles/colors'
 import MenuItem from 'material-ui/MenuItem'
 
 const style = {
-  color: teal500
+  color: teal500,
 }
 const LinkWrapper = styled(Link)`
   text-decoration: none;
 `
-const DrawerLinks = props => {
+const DrawerLinks = (props) => {
   return (
     <LinkWrapper to={props.url} {...props}><MenuItem style={style}>{props.children}</MenuItem></LinkWrapper>
   )

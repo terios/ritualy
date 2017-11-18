@@ -6,9 +6,9 @@ import AppBar from 'material-ui/AppBar'
 const Wrapper = styled(AppBar)`
 `
 
-const overideStyle = (props) => ({
-    position: 'fixed',
-    backgroundColor: 'transparent'
+const overideStyle = props => ({
+  position: 'fixed',
+  backgroundColor: 'transparent',
 })
 
 const Header = (props) => {

@@ -6,7 +6,7 @@ jest.mock('config', () => ({
     default: 'https://api.foo.com',
     root: 'https://api.foursquare.com/v2',
     lookup: '/venues/explore',
-  }
+  },
 }))
 
 describe('checkStatus', () => {
@@ -94,10 +94,10 @@ describe('api', () => {
     test(method, async () => {
       expect(global.fetch).not.toBeCalled()
       await api[method]('/foo')
-      /*expect(global.fetch).toHaveBeenCalledWith(
+      /* expect(global.fetch).toHaveBeenCalledWith(
         'https://api.foo.com/foo',
         expect.objectContaining({ method })
-      )*/
+      ) */
     })
   })
 

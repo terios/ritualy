@@ -19,8 +19,8 @@ const Actions = styled.div`
   justify-content: center;
 `
 
-const FiltersMobile = props => {
-  return(
+const FiltersMobile = (props) => {
+  return (
     <Wrapper>
       <Filters {...props} />
       <Actions>

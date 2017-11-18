@@ -10,7 +10,7 @@ const Wrapper = styled.span`
   padding: 20px 0 0 0;
 `
 
-const FieldComponent = props => {
+const FieldComponent = (props) => {
   return (
     <Wrapper>{props.children}</Wrapper>
   )

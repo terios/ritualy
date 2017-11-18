@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import { compose, withProps } from "recompose"
+import { compose, withProps } from 'recompose'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { googleMaps } from 'config'
-import { withScriptjs, GoogleMap, Marker, withGoogleMap } from "react-google-maps"
+import { withScriptjs, GoogleMap, Marker, withGoogleMap } from 'react-google-maps'
 
 const Wrapper = styled.div`
 `
@@ -11,48 +11,49 @@ const Wrapper = styled.div`
 const MyMapComponent = compose(
   withScriptjs,
   withGoogleMap
-)((props) =>
-  <GoogleMap
+)(props =>
+  (<GoogleMap
     defaultZoom={14}
     defaultCenter={props.bounds.center}
   >
     {
-      props.places.map((place) => (
-        <Marker key={place.venue.id}
+      props.places.map(place => (
+        <Marker
+          key={place.venue.id}
           position={{ lat: place.venue.location.lat, lng: place.venue.location.lng }}
         />
       ))
     }
-  </GoogleMap>
+  </GoogleMap>)
 )
 
 
 class MapView extends Component {
-  constructor(props){
+  constructor(props) {
     super(props)
     this.state = {
-      ...this.getMapDimensions()
+      ...this.getMapDimensions(),
     }
   }
-  getMapDimensions(){
+  getMapDimensions() {
     const height = window.innerHeight - 64
     const width = window.innerWidth
     return { height, width }
   }
-  componentWillMount(){
-    console.log('Map about to be mounted');
+  componentWillMount() {
+    console.log('Map about to be mounted')
   }
-  render(){
+  render() {
     const { height } = this.state
-    return(
+    return (
       <Wrapper>
         <MyMapComponent
           bounds={this.props.bounds}
-          places= {this.props.items}
-          googleMapURL= {googleMaps.url}
-          loadingElement= {<div style={{ height: `100%` }} />}
-          containerElement= {<div style={{ height: height }} />}
-          mapElement= {<div style={{ height: `100%` }} />}
+          places={this.props.items}
+          googleMapURL={googleMaps.url}
+          loadingElement={<div style={{ height: '100%' }} />}
+          containerElement={<div style={{ height }} />}
+          mapElement={<div style={{ height: '100%' }} />}
         />
       </Wrapper>
     )

@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import IconButton from 'material-ui/IconButton'
 import { red400 } from 'material-ui/styles/colors'
 import Paper from 'material-ui/Paper'
-import NavigationLeft from 'material-ui/svg-icons/navigation/chevron-left';
+import NavigationLeft from 'material-ui/svg-icons/navigation/chevron-left'
 
 import firebase from 'firebase'
 
@@ -29,12 +29,8 @@ const Wrapper = styled(Paper)`
 `
 
 class LoginPage extends Component {
-  constructor(props) {
-    super(props)
-  }
-  props: Props
 
-  getHeaderComponent(history) {
+  getHeaderComponent = (history) => {
     return (
       <NavigationHeader
         title="Go back"
@@ -43,8 +39,8 @@ class LoginPage extends Component {
       />
     )
   }
-  handleClick(){
-    console.log('clicked');
+  handleClick = () => {
+    console.log('clicked')
     /*
     const itemsRef = firebase.database().ref('broujoulachat');
     const item = {
@@ -54,6 +50,7 @@ class LoginPage extends Component {
     itemsRef.push(item);
     */
   }
+  props: Props
   render() {
     const { history } = this.props
     return (

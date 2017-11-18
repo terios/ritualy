@@ -7,16 +7,16 @@ const Wrapper = styled(AppBar)`
 `
 
 const overideStyle = (props) => {
-    let container = {
-        position: 'fixed'
-    }
-    if(props.transparent){
-      container.backgroundColor = 'transparent'
-    }
-    return {
-      container: container,
-    }
+  const container = {
+    position: 'fixed',
   }
+  if (props.transparent) {
+    container.backgroundColor = 'transparent'
+  }
+  return {
+    container,
+  }
+}
 const Header = (props) => {
   return (
     <Wrapper

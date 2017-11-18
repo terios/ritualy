@@ -14,12 +14,12 @@ const Wrapper = styled.div`
 `
 const style = {
   buttonOveride: {
-    paddingRight: 20
+    paddingRight: 20,
   },
-};
+}
 
-const SideFilters = props => {
-  return(
+const SideFilters = (props) => {
+  return (
     <Wrapper>
       <Filters {...props} />
       <RaisedButton onClick={props.lookup} style={style.buttonOveride} label="Feed me!" fullWidth secondary />

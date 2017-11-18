@@ -9,7 +9,7 @@
     "test": "jest --setupTestFrameworkScriptFile=raf/polyfill",
     "coverage": "npm test -- --coverage",
     "postcoverage": "opn coverage/lcov-report/index.html",
-    "lint": "eslint src private webpack.config.js",
+    "lint": "eslint src private webpack.config.js --fix",
     "storybook": "start-storybook -p 9001 -c private/storybook",
     "dev": "npm run env:dev -- webpack-dev-server",
     "build:clean": "rimraf \"dist/!(.git*|Procfile)**\"",

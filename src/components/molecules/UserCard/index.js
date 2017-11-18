@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 import { red400 } from 'material-ui/styles/colors'
 
-import Avatar from 'material-ui/Avatar';
+import Avatar from 'material-ui/Avatar'
 
 const CardWrapper = styled.div`
   width: 100%;
@@ -27,9 +27,9 @@ const NameWrapper = styled.span`
   font-size: 18px;
   color: white;
 `
-const AvatarStyle = {margin: 5};
+const AvatarStyle = { margin: 5 }
 
-const UserCard = (props) => (
+const UserCard = props => (
   <CardWrapper>
     <Avatar
       src="http://fanaru.com/adventure-time/image/6827-adventure-time-simple-jake.png"

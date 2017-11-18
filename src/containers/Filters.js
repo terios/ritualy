@@ -6,20 +6,20 @@ import { isPending, hasFailed } from 'redux-saga-thunk'
 
 import { fetchPlacesAsync } from 'store/actions'
 import { fromFood } from 'store/selectors'
-import CircularProgress from 'material-ui/CircularProgress';
+import CircularProgress from 'material-ui/CircularProgress'
 import { Filters, FiltersHOC, GeoLocationHOC } from 'components'
 
 class FiltersContainer extends Component {
 
-  componentWillUpdate(nextProps){
+  componentWillUpdate(nextProps) {
     const { category, keyword, coords } = nextProps
-    this.props.roll({ category, keyword, coords });
+    this.props.roll({ category, keyword, coords })
   }
   renderChildren() {
     const props = this.props
-    return React.Children.map(this.props.children, child => {
-      return React.cloneElement(child, {...props})
-    });
+    return React.Children.map(this.props.children, (child) => {
+      return React.cloneElement(child, { ...props })
+    })
   }
 
   render() {
@@ -30,13 +30,13 @@ class FiltersContainer extends Component {
 }
 
 FiltersContainer.propTypes = {
-  roll: PropTypes.func.isRequired
+  roll: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = state => ({})
 
 const mapDispatchToProps = dispatch => ({
-  roll: (filters) => dispatch(fetchPlacesAsync(filters)),
+  roll: filters => dispatch(fetchPlacesAsync(filters)),
 })
 
 export default compose(
