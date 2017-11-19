@@ -13,8 +13,9 @@ import {
   GenericTemplate,
   Logo,
   NavigationHeader,
-  LoginGates,
 } from 'components'
+
+import { LoginGates } from 'containers'
 
 const Wrapper = styled(Paper)`
   text-align: -webkit-center;
