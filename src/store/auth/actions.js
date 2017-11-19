@@ -1,16 +1,10 @@
-export const AUTH_FACEBOOK_ASYNC = 'AUTH_FACEBOOK_ASYNC'
 export const AUTH_SUCCESS = 'AUTH_SUCCESS'
 export const AUTH_ERROR = 'AUTH_ERROR'
 
-export const authFacebook = () => ({
-  type: AUTH_FACEBOOK_ASYNC,
-  meta: {
-    thunk: 'auth',
-  },
-})
-
-export const authSuccess = ({ thunk }) => ({
+export const authSuccess = ({ provider, thunk, payload }) => ({
   type: 'AUTH_SUCCESS',
+  provider,
+  payload,
   meta: {
     thunk,
   },

@@ -7,7 +7,7 @@ import { red400 } from 'material-ui/styles/colors'
 import Paper from 'material-ui/Paper'
 import NavigationLeft from 'material-ui/svg-icons/navigation/chevron-left'
 
-import firebase from 'firebase'
+// import firebase from 'firebase'
 
 import {
   GenericTemplate,
