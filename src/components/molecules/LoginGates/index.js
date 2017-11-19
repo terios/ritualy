@@ -32,26 +32,23 @@ const styles = {
 const LoginGates = (props) => {
   return (
     <Wrapper>
-
       <FlatButton
         label="Facebook"
         style={styles.facebook}
         icon={<Icon className="socicon-facebook" />}
         onClick={props.handleFacebook}
       />
-
       <FlatButton
         label="Google"
         style={styles.google}
         icon={<Icon noMargin className="socicon-google" />}
       />
-
     </Wrapper>
   )
 }
 
 LoginGates.propTypes = {
-  handleFacebook: PropTypes.func.isRequired,
+  handleFacebook: PropTypes.func.isRequired
 }
 
 export default LoginGates

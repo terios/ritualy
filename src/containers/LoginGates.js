@@ -2,10 +2,22 @@ import React from 'react'
 import { compose } from 'redux'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import styled from 'styled-components'
+import CircularProgress from 'material-ui/CircularProgress'
 
+import { isPending, hasFailed } from 'redux-saga-thunk'
 import { LoginGates } from 'components'
-import { provider, auth } from 'firebase'
-import { authSuccess } from 'store/actions'
+import { auth } from 'firebase'
+import { authSuccess, authFacebook } from 'store/actions'
+import { fromAuth } from 'store/selectors'
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+`
 
 class LoginGatesContainer extends React.Component {
   constructor(props) {
@@ -17,9 +29,6 @@ class LoginGatesContainer extends React.Component {
   componentDidMount() {
     const { authSuccess } = this.props
     auth().getRedirectResult().then(function(result) {
-      console.log('====================================');
-      console.log('result', result);
-      console.log('====================================');
       if (result && result.user) {
         authSuccess({
           provider: 'facebook',
@@ -32,28 +41,64 @@ class LoginGatesContainer extends React.Component {
       console.log('====================================');
     })
   }
-  facebookAuth = () => {
-    auth().signInWithRedirect(provider)
-  }
   render() {
     const {
-      props,
-    } = this;
+      user,
+      loading,
+      failed,
+      authFacebook,
+    } = this.props;
 
     return (
-      <LoginGates handleFacebook={this.facebookAuth} />
+      <Wrapper>
+        {
+          !user && !loading && !failed && (
+            <LoginGates
+              handleFacebook={authFacebook}
+            />
+          )
+        }
+        {
+          !user && loading && !failed && (
+            <CircularProgress size={80} thickness={5} />
+          )
+        }
+        {
+          !user && loading && !failed && (
+            <CircularProgress size={80} thickness={5} />
+          )
+        }
+        {
+          user && (
+            <span>welcome {user.displayName}</span>
+          )
+        }
+      </Wrapper>
     )
   }
 }
 
+LoginGatesContainer.defaultProps = {
+  loading: false,
+  failed: false,
+}
 
 LoginGatesContainer.propTypes = {
   authSuccess: PropTypes.func.isRequired,
+  authFacebook: PropTypes.func.isRequired,
+  user: PropTypes.object,
+  loading: PropTypes.bool,
+  failed: PropTypes.bool,
 }
-const mapStateToProps = state => ({})
+const mapStateToProps = state => ({
+  loading: isPending(state, 'authenticating'),
+  failed: hasFailed(state, 'authenticating'),
+  user: fromAuth.getUser(state),
+})
 
 const mapDispatchToProps = dispatch => ({
   authSuccess: data => dispatch(authSuccess(data)),
+  authFacebook: () => dispatch(authFacebook()),
 })
 
 export default compose(

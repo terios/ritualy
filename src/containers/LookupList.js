@@ -5,7 +5,6 @@ import { connect } from 'react-redux'
 import { isPending, hasFailed } from 'redux-saga-thunk'
 import { fetchPlacesAsync, switchDisplay } from 'store/actions'
 import { fromFood, fromUi } from 'store/selectors'
-import CircularProgress from 'material-ui/CircularProgress'
 import { ListItems, MapView, FloatingButton } from 'components'
 
 const Wrapper = styled.div`
@@ -50,6 +49,7 @@ class LookupListContainer extends Component {
 
 LookupListContainer.propTypes = {
   places: PropTypes.array,
+  loading: PropTypes.bool,
 }
 
 const mapStateToProps = state => ({

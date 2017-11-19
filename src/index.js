@@ -10,14 +10,14 @@ import configureStore from 'store/configure'
 import api from 'services/api'
 import App from 'components/App'
 
-import firebase from 'firebase'
+import { auth, provider } from 'firebase'
 import injectTapEventPlugin from 'react-tap-event-plugin'
 
 import './less/index.less'
 
 injectTapEventPlugin()
 
-const store = configureStore({}, { api: api.create() })
+const store = configureStore({}, { api: api.create(), auth, provider })
 
 const renderApp = () => (
   <Provider store={store}>

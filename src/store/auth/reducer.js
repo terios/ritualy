@@ -1,5 +1,5 @@
 import {
-    AUTH_FACEBOOK_ASYNC,
+    AUTH_PENDING,
     AUTH_SUCCESS,
     AUTH_ERROR,
 } from './actions'
@@ -13,9 +13,10 @@ const extractFacebookData = (payload) => {
 }
 export default (state = initialState, { type, provider, payload, meta, error }) => {
   switch (type) {
-    case AUTH_FACEBOOK_ASYNC:
+    case AUTH_PENDING:
       return {
         ...state,
+        pendingAuth: true,
       }
     case AUTH_SUCCESS:
       if (provider && provider === 'facebook') {
@@ -28,6 +29,9 @@ export default (state = initialState, { type, provider, payload, meta, error }) 
       }
       return state
     case AUTH_ERROR:
+      console.log('====================================')
+      console.log(error)
+      console.log('====================================')
       return {
         ...state,
       }
