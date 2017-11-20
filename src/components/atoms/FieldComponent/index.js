@@ -6,7 +6,6 @@ const Wrapper = styled.span`
   font-size: 15px;
   display: inline-block;
   width: 100%;
-  max-width: 280px;
   padding: 20px 0 0 0;
 `
 

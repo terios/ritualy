@@ -2,6 +2,7 @@ import {
     AUTH_PENDING,
     AUTH_SUCCESS,
     AUTH_ERROR,
+    UPDATE_USER,
 } from './actions'
 import { initialState } from './selectors'
 
@@ -17,6 +18,11 @@ export default (state = initialState, { type, provider, payload, meta, error }) 
       return {
         ...state,
         pendingAuth: true,
+      }
+    case UPDATE_USER:
+      return {
+        ...state,
+        user: payload.user
       }
     case AUTH_SUCCESS:
       if (provider && provider === 'facebook') {

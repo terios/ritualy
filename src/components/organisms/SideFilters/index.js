@@ -13,9 +13,7 @@ const Wrapper = styled.div`
   text-align: left;
 `
 const style = {
-  buttonOveride: {
-    paddingRight: 20,
-  },
+  buttonOveride: {},
 }
 
 const SideFilters = (props) => {

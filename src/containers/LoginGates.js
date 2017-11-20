@@ -6,7 +6,7 @@ import styled from 'styled-components'
 import CircularProgress from 'material-ui/CircularProgress'
 
 import { isPending, hasFailed } from 'redux-saga-thunk'
-import { LoginGates } from 'components'
+import { LoginGates, WelcomeCard } from 'components'
 import { auth } from 'firebase'
 import { authSuccess, authFacebook } from 'store/actions'
 import { fromAuth } from 'store/selectors'
@@ -70,7 +70,7 @@ class LoginGatesContainer extends React.Component {
         }
         {
           user && (
-            <span>welcome {user.displayName}</span>
+            <WelcomeCard title={user.displayName} />
           )
         }
       </Wrapper>

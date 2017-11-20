@@ -12,7 +12,6 @@ import { Title2, Label, FieldComponent } from 'components'
 const OverrideButtonStyle = {
   general: {
     width: '100%',
-    maxWidth: 280,
   },
 }
 
