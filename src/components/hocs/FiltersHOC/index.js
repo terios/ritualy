@@ -12,6 +12,7 @@ const FilterWithActions = (WrappedComponent) => {
       this.state = {
         keyword: '',
         currentCategory: -1,
+        radiusDistance: 200,
       }
     }
 
@@ -22,22 +23,29 @@ const FilterWithActions = (WrappedComponent) => {
     handleOnType = (event, value) => {
       this.setState({ keyword: value })
     };
+    
+    handleOnRadiusChange = (event, value) => {
+      console.log('hello', value);
+      
+      this.setState({ radiusDistance: value })
+    };
 
     lookup = () => {
-      const { category, keyword } = this.state
       const { coords } = this.props
-      this.props.roll({ category, keyword, coords })
+      this.props.roll({ ...this.state, coords })
     }
     render() {
-      const { category, currentCategory, keyword } = this.state
+      const { category, currentCategory, keyword, radiusDistance } = this.state
       return (
         <WrappedComponent
           category={category}
           keyword={keyword}
+          radiusDistance={radiusDistance}
           currentCategory={currentCategory}
           lookup={this.lookup}
           handleCategoryChange={this.handleCategoryChange}
           handleOnType={this.handleOnType}
+          handleOnRadiusChange={this.handleOnRadiusChange}
           {...this.props}
         />
       )

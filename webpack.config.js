@@ -70,6 +70,7 @@ module.exports = createConfig([
     file(),
   ]),
   addPlugins([
+    new webpack.ProgressPlugin(),
     new SpritesmithPlugin({
       src: {
         cwd: path.resolve(__dirname, 'src/images'),
@@ -99,11 +100,15 @@ module.exports = createConfig([
       headers: { 'Access-Control-Allow-Origin': '*' },
       host,
       port,
+      hotOnly: true,
     }),
     devServer.proxy({
       '/api': { target: 'http://localhost:3000' },
     }),
     sourceMaps(),
+    addPlugins([
+      new webpack.NamedModulesPlugin(),
+    ]),
   ]),
   env('production', [
     uglify(),

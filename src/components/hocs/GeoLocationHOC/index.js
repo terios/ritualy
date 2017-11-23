@@ -17,7 +17,7 @@ const GeoLocationHOC = ({
       constructor(props) {
         super(props)
         this.state = {
-          coords: null,
+          coords: {lat:33.5883100, lng: -7.6113800},
           isGeolocationAvailable: Boolean(geolocationProvider),
           isGeolocationEnabled: true, // be optimistic
           positionError: null,
@@ -40,6 +40,7 @@ const GeoLocationHOC = ({
 
       onPositionSuccess(position) {
         if (this.isCurrentlyMounted) {
+          console.log('git position')
           this.setState({
             coords: {
               lat: position.coords.latitude,
@@ -60,6 +61,8 @@ const GeoLocationHOC = ({
       }
 
       componentDidMount() {
+        console.log('getting position');
+        
         this.isCurrentlyMounted = true
         this.getLocation()
       }

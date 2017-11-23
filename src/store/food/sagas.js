@@ -5,11 +5,12 @@ import { getCenterFromBounds } from 'services/map'
 import * as actions from './actions'
 
 
-const prepareQuery = ({ category, keyword, coords }) => {
+const prepareQuery = ({ category, keyword, coords, radiusDistance }) => {
   return {
     ...initialFilter,
     ll: `${coords.lat},${coords.lng}`,
     limit: 15,
+    radius: radiusDistance,
     categoryId: category,
     query: keyword,
     venuePhotos: 1,

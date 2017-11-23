@@ -30,7 +30,9 @@ class Filters extends Component {
       category,
       handleCategoryChange,
       handleOnType,
+      handleOnRadiusChange,
       keyword,
+      radiusDistance,
      } = this.props
     return (
       <Wrapper>
@@ -58,10 +60,11 @@ class Filters extends Component {
           <FieldComponent>
             <Label text="Search radius" />
             <Slider
-              min={0}
-              max={100}
-              step={1}
-              value={30}
+              min={50}
+              max={1000}
+              step={50}
+              onChange={handleOnRadiusChange}
+              value={radiusDistance}
             />
           </FieldComponent>
         </FiltersWrapper>

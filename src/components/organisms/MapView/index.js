@@ -17,10 +17,20 @@ const MyMapComponent = compose(
     defaultCenter={props.bounds.center}
   >
     {
+      props.position && (
+        <Marker
+          key='100'
+          position={{ lat: props.position.lat, lng: props.position.lng }}
+          icon='/person_marker.png'
+        />
+      )
+    }
+    {
       props.places.map(place => (
         <Marker
           key={place.venue.id}
           position={{ lat: place.venue.location.lat, lng: place.venue.location.lng }}
+          icon='/marker.png'
         />
       ))
     }
@@ -54,6 +64,7 @@ class MapView extends Component {
           loadingElement={<div style={{ height: '100%' }} />}
           containerElement={<div style={{ height }} />}
           mapElement={<div style={{ height: '100%' }} />}
+          position={this.props.position}
         />
       </Wrapper>
     )

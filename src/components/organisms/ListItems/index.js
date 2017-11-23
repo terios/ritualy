@@ -23,6 +23,7 @@ const ListItems = props => (
           title={item.venue.name}
           rating={item.venue.rating}
           picture={getImageForList(item.venue.photos.groups)}
+          withDivider={true}
         />
       ))
     }

@@ -32,7 +32,10 @@ const root = document.getElementById('app')
 render(renderApp(), root)
 
 if (module.hot) {
+  console.log('something in here')
+
   module.hot.accept('components/App', () => {
+    console.log('reloading')
     require('components/App')
     render(renderApp(), root)
   })

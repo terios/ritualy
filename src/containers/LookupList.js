@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { compose } from 'redux'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
 import { isPending, hasFailed } from 'redux-saga-thunk'
 import { fetchPlacesAsync, switchDisplay } from 'store/actions'
 import { fromFood, fromUi } from 'store/selectors'
-import { ListItems, MapView, FloatingButton } from 'components'
+import { GeoLocationHOC, ListItems, MapView, FloatingButton } from 'components'
+
 
 const Wrapper = styled.div`
   width: 100%;
@@ -29,8 +31,9 @@ class LookupListContainer extends Component {
   }
 
   render() {
-    const { loading, places, displayMode, bounds } = this.props
+    const { loading, places, displayMode, bounds, coords } = this.props
     const { changeDisplayTo } = this.state
+    
     return (
       <Wrapper>
         { displayMode === 'list' && (
@@ -38,7 +41,7 @@ class LookupListContainer extends Component {
             )
           }
         { displayMode === 'map' && (
-          <MapView items={places} bounds={bounds} />
+          <MapView items={places} bounds={bounds} position={coords} />
             )
           }
         <FloatingButton onClick={this.handleDisplayChange} icon={changeDisplayTo} />
@@ -63,4 +66,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   switchDisplay: displayMode => dispatch(switchDisplay(displayMode)),
 })
-export default connect(mapStateToProps, mapDispatchToProps)(LookupListContainer)
+
+export default compose(
+  connect(mapStateToProps, mapDispatchToProps),
+  GeoLocationHOC({}),
+)(LookupListContainer)
