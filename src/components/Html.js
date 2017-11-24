@@ -16,6 +16,10 @@ const Html = ({
         {helmet.title.toComponent()}
         {helmet.meta.toComponent()}
         {helmet.link.toComponent()}
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+        <link rel="stylesheet" href="https://d1azc1qln24ryf.cloudfront.net/114779/Socicon/style-cf.css?rd5re8" />
+
         {assets.css.map(path => <link rel="stylesheet" type="text/css" key={path} href={path} />)}
         {styles}
       </head>

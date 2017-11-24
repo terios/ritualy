@@ -10,6 +10,7 @@ import { Provider } from 'react-redux'
 import { StaticRouter } from 'react-router'
 import { renderToString } from 'react-router-server'
 
+import { auth, provider, firebaseStore } from './firebase'
 import { port, host, basename } from 'config'
 import configureStore from 'store/configure'
 import api from 'services/api'
@@ -35,6 +36,7 @@ const renderHtml = ({
 }) => {
   const styles = sheet.getStyleElement()
   const { assets } = global
+  global.navigator = { userAgent: 'all' };  
   const state = `
     window.__SERVER_STATE__ = ${serialize(serverState)};
     window.__INITIAL_STATE__ = ${serialize(initialState)};
@@ -52,7 +54,9 @@ app.use(basename, express.static(path.resolve(process.cwd(), 'dist/public')))
 
 app.use((req, res, next) => {
   const location = req.url
-  const store = configureStore({}, { api: api.create() })
+  const store = configureStore({}, { api: api.create(), auth, provider })
+  //firebaseStore(store)
+  
   const context = {}
   const sheet = new ServerStyleSheet()
 
