@@ -40,14 +40,13 @@ class HomePage extends Component {
     const { filterModalOpen } = this.state
     return (
       <GenericTemplate
-              header={this.getHeaderComponent()}
-              drawer={<Drawer />}
-            >
+        header={this.getHeaderComponent()}
+        drawer={<Drawer />}
+      >
         <Wrapper>
-
-            <FiltersContainer>
-              <SideFilters />
-            </FiltersContainer>
+          <FiltersContainer>
+            <SideFilters />
+          </FiltersContainer>
           <LookupList />
           <Modal modalState={filterModalOpen}>
             <FiltersContainer>

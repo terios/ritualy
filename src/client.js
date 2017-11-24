@@ -1,9 +1,7 @@
-/* eslint-disable no-underscore-dangle */
-// https://github.com/diegohaz/arc/wiki/Example-app
 import 'react-hot-loader/patch'
 import 'babel-polyfill'
 import React from 'react'
-import { render } from 'react-dom'
+import { hydrate } from 'react-dom'
 import { Provider } from 'react-redux'
 import { BrowserRouter } from 'react-router-dom'
 import { ServerStateProvider } from 'react-router-server'
@@ -34,11 +32,11 @@ const renderApp = () => (
 )
 
 const root = document.getElementById('app')
-render(renderApp(), root)
+hydrate(renderApp(), root)
 
 if (module.hot) {
   module.hot.accept('components/App', () => {
     require('components/App')
-    render(renderApp(), root)
+    hydrate(renderApp(), root)
   })
 }

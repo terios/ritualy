@@ -1,6 +1,6 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
-import { injectGlobal, ThemeProvider } from 'styled-components'
+import { injectGlobal } from 'styled-components'
 import Helmet from 'react-helmet'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
@@ -13,10 +13,12 @@ import theme from './themes/default'
 injectGlobal`
   body {
     margin: 0;
+    padding: 0;
+    font-family: sans-serif;
   }
 `
 
-const App = () => {
+const App = (props) => {  
   return (
     <div>
       <Helmet titleTemplate="ARc - %s">
@@ -30,7 +32,7 @@ const App = () => {
         <meta property="og:image:height" content="630" />
         <link rel="icon" href="https://arc.js.org/icon.png" />
       </Helmet>
-      <MuiThemeProvider muiTheme={getMuiTheme(theme, { userAgent: 'all'})}>
+      <MuiThemeProvider muiTheme={props.muiTheme}>
         <Switch>
           <Route path="/" component={HomePage} exact />
         </Switch>

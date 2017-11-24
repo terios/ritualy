@@ -39,8 +39,8 @@ export const parseEndpoint = (endpoint, params) => {
 
 const api = {}
 
-api.request = (endpoint, { params, ...settings } = {}) =>
-  fetch(parseEndpoint(endpoint, params), parseSettings(settings))
+api.request = (endpoint, { params, noHeaders, ...settings } = {}) =>
+  fetch(parseEndpoint(endpoint, params), noHeaders ? {} : parseSettings(settings))
     .then(checkStatus)
     .then(parseJSON)
 

@@ -9,6 +9,8 @@ import { renderToStaticMarkup } from 'react-dom/server'
 import { Provider } from 'react-redux'
 import { StaticRouter } from 'react-router'
 import { renderToString } from 'react-router-server'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import getMuiTheme from 'material-ui/styles/getMuiTheme'
 
 import { auth, provider, firebaseStore } from './firebase'
 import { port, host, basename } from 'config'
@@ -18,14 +20,17 @@ import App from 'components/App'
 import Html from 'components/Html'
 import Error from 'components/Error'
 
+import theme from './components/themes/default'
+import { log } from '@firebase/database/dist/cjs/src/core/util/util';
+
 const renderApp = ({
-  store, context, location, sheet,
-}) => {
+  store, context, location, sheet, req
+}) => {  
   const app = sheet.collectStyles((
     <Provider store={store}>
-      <StaticRouter basename={basename} context={context} location={location}>
-        <App />
-      </StaticRouter>
+        <StaticRouter basename={basename} context={context} location={location}>
+          <App muiTheme={getMuiTheme(theme, { userAgent: req.headers['user-agent'] })} />
+        </StaticRouter>
     </Provider>
   ))
   return renderToString(app)
@@ -36,11 +41,12 @@ const renderHtml = ({
 }) => {
   const styles = sheet.getStyleElement()
   const { assets } = global
-  global.navigator = { userAgent: 'all' };  
   const state = `
     window.__SERVER_STATE__ = ${serialize(serverState)};
     window.__INITIAL_STATE__ = ${serialize(initialState)};
   `
+  console.log('global ', global);
+  
   const props = {
     styles, assets, state, content,
   }
@@ -61,7 +67,7 @@ app.use((req, res, next) => {
   const sheet = new ServerStyleSheet()
 
   renderApp({
-    store, context, location, sheet,
+    store, context, location, sheet, req,
   }).then(({ state: serverState, html: content }) => {
     if (context.status) {
       res.status(context.status)
@@ -71,7 +77,7 @@ app.use((req, res, next) => {
     } else {
       const initialState = store.getState()
       res.send(renderHtml({
-        serverState, initialState, content, sheet,
+        serverState, initialState, content, sheet, req
       }))
     }
   }).catch(next)
